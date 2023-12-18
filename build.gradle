@@ -45,8 +45,10 @@ dependencies {
 }
 
 tasks.withType(KotlinCompile).configureEach {
-	freeCompilerArgs += '-Xjsr305=strict'
-	jvmTarget = '21'
+	kotlinOptions {
+		freeCompilerArgs += '-Xjsr305=strict'
+		jvmTarget = '21'
+	}
 }
 
 tasks.named('test') {
