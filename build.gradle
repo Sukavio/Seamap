@@ -27,6 +27,7 @@ ext {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-graphql'
 	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
 	implementation 'io.projectreactor.kotlin:reactor-kotlin-extensions'
@@ -43,11 +44,9 @@ dependencies {
 	testImplementation 'org.testcontainers:mongodb'
 }
 
-tasks.withType(KotlinCompile) {
-	kotlinOptions {
-		freeCompilerArgs += '-Xjsr305=strict'
-		jvmTarget = '21'
-	}
+tasks.withType(KotlinCompile).configureEach {
+	freeCompilerArgs += '-Xjsr305=strict'
+	jvmTarget = '21'
 }
 
 tasks.named('test') {
